@@ -31,19 +31,21 @@ imprimeResultado();
 
 function sorteia() {
 
-		for(i = 0; i < numeroDeParticipantes; i++) {
+		for(var i = 0; i < numeroDeParticipantes; i++) {
 
 			var numero = pegaNumero();
-			while (numero == i)
+			while (numero == i) {
 				numero = pegaNumero();
+			}
 
+			count = 0;
+			numerosSorteados[i] = numero; 
+			
 			participantes[i] = {
 				nome: nomes[i],
 				numero: numero,
 				pessoaSorteada: nomes[numero]
 			}
-			count = 0;
-			numerosSorteados[i] = numero; 
 		}
 
 
@@ -51,7 +53,7 @@ function sorteia() {
 
 function imprimeResultado() {
 	
-		for(i = 0; i < numeroDeParticipantes; i++) {
+		for(var i = 0; i < numeroDeParticipantes; i++) {
 
 			console.log(participantes[i].nome +
 			   "  .........>  " 
@@ -77,9 +79,9 @@ function pegaNumero() {
 //verifica se um numero já foi sorteado
 function numeroJaFoiSorteado(numero) {
 
-	for(j = 0; j<= numeroDeParticipantes; j++) {
+	for(var i = 0; i<= numeroDeParticipantes; i++) {
 
-		if (numerosSorteados[j] === numero)
+		if (numerosSorteados[i] === numero)
 			return true; 
 	}
 
