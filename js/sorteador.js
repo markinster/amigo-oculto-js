@@ -1,26 +1,23 @@
 
-var numeroDeParticipantes = 12;
-var nomes = [numeroDeParticipantes];
-nomes[0] = "Marcos";
-nomes[1] = "Steve Balmer";
-nomes[2] = "Jobs";
-nomes[3] = "Arthas";
-nomes[4] = "James Gosling";
-nomes[5] = "Guldan";
-nomes[6] = "Dennis Ritchie";
-nomes[7] = "Martin Fowler";
-nomes[8] = "Varyan Wryn";
-nomes[9] = "Sargeras";
-nomes[10] = "Valdemort";
-nomes[11] = "Dumbledore";
+var nomes = [];
+nomes.push("Marcos");
+nomes.push("Steve Balmer");
+nomes.push("Jobs");
+nomes.push("Arthas");
+nomes.push("James Gosling");
+nomes.push("Guldan");
+nomes.push("Dennis Ritchie");
+nomes.push("Martin Fowler");
+nomes.push("Varyan Wryn");
+nomes.push("Sargeras");
+nomes.push("Valdemort");
+nomes.push("Dumbledore");
 
 
 
-
-var participantes = [numeroDeParticipantes];
-var numerosSorteados = [numeroDeParticipantes];
-var count = 0;
-
+var numeroDeParticipantes = nomes.length;
+var participantes = [];
+var numerosSorteados = [];
 
 sorteia();
 imprimeResultado();
@@ -31,34 +28,31 @@ imprimeResultado();
 
 function sorteia() {
 
-		for(var i = 0; i < numeroDeParticipantes; i++) {
+	for(var i = 0; i < numeroDeParticipantes; i++) {
 
-			var numero = pegaNumero();
-			while (numero == i) {
-				numero = pegaNumero();
-			}
-
-			count = 0;
-			numerosSorteados[i] = numero; 
-			
-			participantes[i] = {
-				nome: nomes[i],
-				numero: numero,
-				pessoaSorteada: nomes[numero]
-			}
+		var numero = pegaNumero();
+		while (numero == i) {
+			numero = pegaNumero();
 		}
+
+		numerosSorteados[i] = numero; 
+		
+		participantes[i] = {
+			nome: nomes[i],
+			numero: numero,
+			pessoaSorteada: nomes[numero]
+		}
+	}
 
 
 }
 
 function imprimeResultado() {
-	
-		for(var i = 0; i < numeroDeParticipantes; i++) {
 
-			console.log(participantes[i].nome +
-			   "  .........>  " 
-			   + participantes[i].pessoaSorteada);
-		}
+	participantes.forEach(function(element) {
+				console.log(element.nome, "  .........>  ", element.pessoaSorteada);
+			});
+	
 }
 
 
